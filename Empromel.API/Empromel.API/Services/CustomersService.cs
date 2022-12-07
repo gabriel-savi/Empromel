@@ -30,5 +30,39 @@ namespace Empromel.API.Services
         {
             return _repository.GetAllCustomers();
         }
+
+        public Customer GetCustomerByCpf(string cpf)
+        {
+            if (cpf == null)
+                throw new Exception("Número do CPF não informado!");
+
+            if (cpf.Length != 11)
+                throw new Exception("CPF inválido!");
+
+            return _repository.GetCustomerByCpf(cpf);
+        }
+
+        public void UpdateCustomer(Customer customer)
+        {
+        
+            Customer customerUp = _repository.GetCustomerByCpf(customer.Cpf);
+
+            if(customerUp == null)
+                throw new Exception("Esse cliente não existe!");
+
+            if (customer.Cpf == null || customer.Name == null || customer.BirthDate == null || customer.Gender == null || customer.Cep == null || customer.Street == null || customer.AddressNumber == null ||
+                || customer.City || customer.Uf)
+                throw new Exception("Dados obrigatórios não informados corretamente!");
+
+            if (customer.Cpf.Length != 11 || customer.Cep.Length != 9 )
+                throw new Exception("Dados inválido!");
+
+             _repository.UpdateCustomer(customer);
+        }
+
+        public void DeleteCustomer(Customer customer)
+        {
+            _repository.DeleteCustomer(customer);
+        }
     }
 }

@@ -62,6 +62,11 @@ namespace Empromel.API.Services
 
         public void DeleteCustomer(Customer customer)
         {
+            Customer customerDell= _repository.GetCustomerByCpf(customer.Cpf);
+
+            if(customerDell == null)
+                throw new Exception("CPF inserido inválido!");
+
             _repository.DeleteCustomer(customer);
         }
     }

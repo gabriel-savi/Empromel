@@ -5,7 +5,8 @@ namespace Empromel.API.Models
     public class Product
     {
         [Key]
-        [Required]
+        public Guid Id { get; set; }
+
         [MaxLength(100)]
         public string Name { get; set; }
 
@@ -14,7 +15,7 @@ namespace Empromel.API.Models
         public string Quantity { get; set; }
 
         [Required]
-        public DataType Lot { get; set; }
+        public DateTime ExpirationDate { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -22,11 +23,11 @@ namespace Empromel.API.Models
 
         [Required]
         [MaxLength(7)]
-        public string Price_Paid { get; set; }
+        public string PricePaid { get; set; }
 
         [Required]
         [MaxLength(7)]
-        public string Price_Charged { get; set; }
+        public string PriceCharged { get; set; }
 
     }
 }

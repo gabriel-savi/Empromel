@@ -17,10 +17,10 @@ namespace Empromel.API.Services
             if (customer.Cpf == null || customer.Name == null || customer.BirthDate == null || customer.Gender == null || customer.Cep == null || customer.Street == null || customer.AddressNumber == null ||
                 || customer.City || customer.Uf)
                 throw new Exception("Dados obrigatórios não informados corretamente!");
-                
+
             Customer customerDb = _repository.GetCustomerByCpf(customer.Cpf);
 
-            if(customerDb != null)
+            if (customerDb != null)
                 throw new Exception("O cliente já existe na base de dados!");
 
             _repository.AddCustomer(customer);
@@ -44,30 +44,30 @@ namespace Empromel.API.Services
 
         public void UpdateCustomer(Customer customer)
         {
-        
+
             Customer customerUp = _repository.GetCustomerByCpf(customer.Cpf);
 
-            if(customerUp == null)
+            if (customerUp == null)
                 throw new Exception("Esse cliente não existe!");
 
             if (customer.Cpf == null || customer.Name == null || customer.BirthDate == null || customer.Gender == null || customer.Cep == null || customer.Street == null || customer.AddressNumber == null ||
                 || customer.City || customer.Uf)
                 throw new Exception("Dados obrigatórios não informados corretamente!");
 
-            if (customer.Cpf.Length != 11 || customer.Cep.Length != 9 )
+            if (customer.Cpf.Length != 11 || customer.Cep.Length != 9)
                 throw new Exception("Dados inválido!");
 
-             _repository.UpdateCustomer(customer);
+            _repository.UpdateCustomer(customer);
         }
 
-        public void DeleteCustomer(Customer customer)
+        public void DeleteCustomer(string cpf)
         {
-            Customer customerDell= _repository.GetCustomerByCpf(customer.Cpf);
+            Customer customerDell = _repository.GetCustomerByCpf(cpf);
 
-            if(customerDell == null)
+            if (customerDell == null)
                 throw new Exception("CPF inserido inválido!");
 
-            _repository.DeleteCustomer(customer);
+            _repository.DeleteCustomer(customerDell);
         }
     }
 }

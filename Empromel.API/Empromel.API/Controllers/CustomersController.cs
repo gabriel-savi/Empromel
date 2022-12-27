@@ -24,21 +24,21 @@ namespace Empromel.API.Controllers
         }
 
         [Route("getallcustomers")]
-        [HttpPost]
+        [HttpGet]
         public IActionResult GetAllCustomers()
         {
             return Ok(_customersService.GetAllCustomers());
         }
 
         [Route("getcustomerbycpf/{cpf}")]
-        [HttpPost]
+        [HttpGet]
         public IActionResult GetByCpf(string cpf)
         {
             return Ok(_customersService.GetCustomerByCpf(cpf));
         }
 
         [Route("updatecustomer")]
-        [HttpPost]
+        [HttpPut]
         public IActionResult UpdateCustomer(Customer customer)
         {
             _customersService.UpdateCustomer(customer);
@@ -46,7 +46,7 @@ namespace Empromel.API.Controllers
         }
 
         [Route("deletecustomer/{cpf}")]
-        [HttpPost]
+        [HttpDelete]
         public IActionResult DeleteCustomer(string cpf)
         {
             _customersService.DeleteCustomer(cpf);

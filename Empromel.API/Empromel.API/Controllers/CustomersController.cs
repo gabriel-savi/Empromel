@@ -37,11 +37,20 @@ namespace Empromel.API.Controllers
             return Ok(_customersService.GetCustomerByCpf(cpf));
         }
 
-        [Route("getcustomerbycpf/{cpf}")]
+        [Route("updatecustomer")]
         [HttpPost]
-        public IActionResult GetByCpf(string cpf)
+        public IActionResult UpdateCustomer(Customer customer)
         {
-            return Ok(_customersService.GetCustomerByCpf(cpf));
+            _customersService.UpdateCustomer(customer);
+            return Ok();
+        }
+
+        [Route("deletecustomer/{cpf}")]
+        [HttpPost]
+        public IActionResult DeleteCustomer(string cpf)
+        {
+            _customersService.DeleteCustomer(cpf);
+            return Ok();
         }
     }
 }

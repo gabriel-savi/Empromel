@@ -22,12 +22,10 @@ namespace Empromel.API.Models
         public string Brand { get; set; }
 
         [Required]
-        [MaxLength(7)]
-        public string PricePaid { get; set; }
+        public float PricePaid { get; set; }
 
         [Required]
-        [MaxLength(7)]
-        public string PriceCharged { get; set; }
+        public float PriceCharged { get; set; }
 
     }
 }

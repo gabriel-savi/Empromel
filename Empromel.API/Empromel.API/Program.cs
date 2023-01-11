@@ -1,4 +1,6 @@
 using Empromel.API.Data.Context;
+using Empromel.API.Repositories;
+using Empromel.API.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,13 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
 }, ServiceLifetime.Transient);
+
+builder.Services.AddTransient<CustomersService>();
+builder.Services.AddTransient<ProductsService>();
+builder.Services.AddTransient<ExpensesService>();
+builder.Services.AddTransient<CustomersRepository>();
+builder.Services.AddTransient<ProductsRepository>();
+builder.Services.AddTransient<ExpensesRepository>();
 
 var app = builder.Build();
 

@@ -15,8 +15,7 @@ namespace Empromel.API.Models
         public DateTime PurchaseDate { get; set; }
 
         [Required]
-        [MaxLength(7)]
-        public string PricePaid { get; set; }
+        public float PricePaid { get; set; }
 
     }
 }

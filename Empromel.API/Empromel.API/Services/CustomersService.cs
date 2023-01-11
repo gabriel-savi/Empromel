@@ -14,8 +14,8 @@ namespace Empromel.API.Services
 
         public void AddCustomer(Customer customer)
         {
-            if (customer.Cpf == null || customer.Name == null || customer.BirthDate == null || customer.Gender == null || customer.Cep == null || customer.Street == null || customer.AddressNumber == null ||
-                || customer.City || customer.Uf)
+            if (customer.Cpf == null || customer.Name == null || customer.BirthDate == DateTime.MinValue || customer.Gender == null || customer.Cep == null || customer.Street == null || customer.AddressNumber == 0
+                || customer.City == null || customer.Uf == null)
                 throw new Exception("Dados obrigatórios não informados corretamente!");
 
             Customer customerDb = _repository.GetCustomerByCpf(customer.Cpf);
@@ -50,8 +50,8 @@ namespace Empromel.API.Services
             if (customerUp == null)
                 throw new Exception("Esse cliente não existe!");
 
-            if (customer.Cpf == null || customer.Name == null || customer.BirthDate == null || customer.Gender == null || customer.Cep == null || customer.Street == null || customer.AddressNumber == null ||
-                || customer.City || customer.Uf)
+            if (customer.Cpf == null || customer.Name == null || customer.BirthDate == DateTime.MinValue || customer.Gender == null || customer.Cep == null || customer.Street == null || customer.AddressNumber == 0
+                || customer.City == null || customer.Uf == null)
                 throw new Exception("Dados obrigatórios não informados corretamente!");
 
             if (customer.Cpf.Length != 11 || customer.Cep.Length != 9)

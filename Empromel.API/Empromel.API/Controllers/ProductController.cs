@@ -9,9 +9,9 @@ namespace Empromel.API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductsServices _productsServices;
+        private readonly ProductsService _productsServices;
 
-        public ProductController(ProductsServices productsServices)
+        public ProductController(ProductsService productsServices)
         {
             this._productsServices = productsServices;
         }

@@ -34,7 +34,7 @@ namespace Empromel.API.Controllers
         }
 
         [HttpGet]
-        [Route("getexpensesbydescription{description}")]
+        [Route("getexpensesbydescription/{description}")]
         public IActionResult GetExpensesByDescription(string description)
         {
 
@@ -50,7 +50,7 @@ namespace Empromel.API.Controllers
         }
 
         [HttpDelete]
-        [Route("deleteexpenses{description}")]
+        [Route("deleteexpenses/{description}")]
         public IActionResult DeleteExpenses(string description)
         {
             _expensesService.DeleteteExpenses(description);

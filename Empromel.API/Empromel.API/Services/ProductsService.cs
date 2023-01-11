@@ -3,11 +3,11 @@ using Empromel.API.Repositories;
 
 namespace Empromel.API.Services
 {
-    public class ProductsServices
+    public class ProductsService
     {
         private readonly ProductsRepository _repository;
 
-        public ProductsServices(ProductsRepository repository)
+        public ProductsService(ProductsRepository repository)
         {
             _repository = repository;
         }

@@ -27,7 +27,7 @@ namespace Empromel.API.Repositories
 
         public Expenses GetExpensesByDescription(string description)
         {
-            return _context.Expenses.First(p => p.Description == description);
+            return _context.Expenses.FirstOrDefault(p => p.Description == description);
         }
 
         public void UpdateExpenses(Expenses expenses)

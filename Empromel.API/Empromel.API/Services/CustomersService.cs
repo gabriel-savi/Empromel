@@ -14,7 +14,10 @@ namespace Empromel.API.Services
 
         public void AddCustomer(Customer customer)
         {
-            if (customer.Cpf == null || customer.Name == null || customer.BirthDate == DateTime.MinValue || customer.Gender == null || customer.Cep == null || customer.Street == null || customer.AddressNumber == 0
+            if (customer.Cpf.Length != 11 || customer.Cep.Length != 9)
+                throw new Exception("Dados inválido!");
+
+            if (customer.Cpf == null ||customer.Name == null || customer.BirthDate == DateTime.MinValue || customer.Gender == null || customer.Cep == null || customer.Street == null || customer.AddressNumber == 0
                 || customer.City == null || customer.Uf == null)
                 throw new Exception("Dados obrigatórios não informados corretamente!");
 

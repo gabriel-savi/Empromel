@@ -1,5 +1,6 @@
 ﻿using Empromel.API.Data.Context;
 using Empromel.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Empromel.API.Repositories
 {
@@ -25,7 +26,7 @@ namespace Empromel.API.Repositories
 
         public Customer GetCustomerByCpf(string cpf)
         {
-            return _context.Customers.Find(cpf);
+            return _context.Customers.AsNoTracking().ToList().FirstOrDefault(c => c.Cpf == cpf);
         }
 
         public void UpdateCustomer(Customer customer)

@@ -18,10 +18,6 @@ namespace Empromel.API.Services
                 || product.PriceCharged == 0)
                 throw new Exception("Dados obrigatorios não inseridos corretamente!");
 
-            Product productDb = _repository.GetProductByName(product.Name);
-
-            if (productDb != null)
-                throw new Exception("Produto já inserido no banco de dados!");
 
             _repository.AddProduct(product);
         }
@@ -41,7 +37,7 @@ namespace Empromel.API.Services
 
         public void UpdateProduct(Product product)
         {
-            Product productUp = _repository.GetProductByName(product.Name);
+            Product productUp = _repository.GetProductById(product.Id);
 
             if (productUp == null)
                 throw new Exception("Nome do produto inválido!");
@@ -53,9 +49,9 @@ namespace Empromel.API.Services
             _repository.UpdateProduct(product);
         }
 
-        public void DeleteProduct(string name)
+        public void DeleteProduct(Guid id)
         {
-            Product productDell = _repository.GetProductByName(name);
+            Product productDell = _repository.GetProductById(id);
 
             if (productDell == null)
                 throw new Exception("Nome do produto inválido!");

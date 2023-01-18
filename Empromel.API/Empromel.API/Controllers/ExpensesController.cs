@@ -50,10 +50,10 @@ namespace Empromel.API.Controllers
         }
 
         [HttpDelete]
-        [Route("deleteexpenses/{description}")]
-        public IActionResult DeleteExpenses(string description)
+        [Route("deleteexpenses/{id}")]
+        public IActionResult DeleteExpenses(Guid id)
         {
-            _expensesService.DeleteteExpenses(description);
+            _expensesService.DeleteteExpenses(id);
             return Ok();
         }
 

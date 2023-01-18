@@ -1,5 +1,6 @@
 ﻿using Empromel.API.Data.Context;
 using Empromel.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Empromel.API.Repositories
 {
@@ -21,6 +22,11 @@ namespace Empromel.API.Repositories
         public List<Product> GetAllProducts()
         {
             return _context.Products.ToList();
+        }
+
+        public Product GetProductById(Guid id)
+        {
+            return _context.Products.AsNoTracking().FirstOrDefault(p => p.Id == id);
         }
 
         public Product GetProductByName(string name)

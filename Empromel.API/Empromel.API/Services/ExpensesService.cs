@@ -18,9 +18,6 @@ namespace Empromel.API.Services
             if (expenses.Description == null || expenses.PricePaid == 0 || expenses.PurchaseDate == DateTime.MinValue)
                 throw new Exception("Dados obrigatório inseridos incorretamente!");
 
-            Expenses expensesDb = _expensesRepository.GetExpensesByDescription(expenses.Description);
-            if (expensesDb != null)
-                throw new Exception("Despesa já cadastrada!");
 
             _expensesRepository.AddExpenses(expenses);
         }
@@ -40,19 +37,19 @@ namespace Empromel.API.Services
 
         public void UpdateExpenses(Expenses expenses)
         {
-            Expenses expensesUp = _expensesRepository.GetExpensesByDescription(expenses.Description);
+            Expenses expensesUp = _expensesRepository.GetExpensesById(expenses.Id);
             if (expensesUp == null)
                 throw new Exception("Despesa não cadastrada!");
 
             if (expenses.Description == null || expenses.PricePaid == 0 || expenses.PurchaseDate == DateTime.MinValue)
                 throw new Exception("Dados obrigatório inseridos incorretamente!");
 
-            _expensesRepository.UpdateExpenses(expensesUp);
+            _expensesRepository.UpdateExpenses(expenses);
         }
 
-        public void DeleteteExpenses(string description)
+        public void DeleteteExpenses(Guid id)
         {
-            Expenses expensesDell = _expensesRepository.GetExpensesByDescription(description);
+            Expenses expensesDell = _expensesRepository.GetExpensesById(id);
             if (expensesDell == null)
                 throw new Exception("Despesa não cadastrada!");
 

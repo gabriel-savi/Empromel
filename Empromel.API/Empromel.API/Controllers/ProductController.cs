@@ -46,11 +46,11 @@ namespace Empromel.API.Controllers
             return Ok();
         }
 
-        [Route("deleteproduct/{name}")]
+        [Route("deleteproduct/{id}")]
         [HttpDelete]
-        public IActionResult DeleteProduct(string name)
+        public IActionResult DeleteProduct(Guid id)
         {
-            _productsServices.DeleteProduct(name);
+            _productsServices.DeleteProduct(id);
             return Ok();
         }
     }

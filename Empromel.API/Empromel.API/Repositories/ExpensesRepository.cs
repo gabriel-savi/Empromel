@@ -25,9 +25,14 @@ namespace Empromel.API.Repositories
             return _context.Expenses.ToList();
         }
 
+        public Expenses GetExpensesById(Guid id)
+        {
+            return _context.Expenses.AsNoTracking().FirstOrDefault(p => p.Id == id);
+        }
+
         public Expenses GetExpensesByDescription(string description)
         {
-            return _context.Expenses.FirstOrDefault(p => p.Description == description);
+            return _context.Expenses.AsNoTracking().FirstOrDefault(p => p.Description == description);
         }
 
         public void UpdateExpenses(Expenses expenses)

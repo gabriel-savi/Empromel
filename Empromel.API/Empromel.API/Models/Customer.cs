@@ -33,7 +33,7 @@ namespace Empromel.API.Models
         [Required]
         public string Street { get; set; }
 
-        [MaxLength(4)]
+        
         [Required]
         public int AddressNumber { get; set; }
 

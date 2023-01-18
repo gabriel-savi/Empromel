@@ -1,5 +1,6 @@
 ﻿using Empromel.API.Data.Context;
 using Empromel.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Empromel.API.Repositories
 {
@@ -23,9 +24,14 @@ namespace Empromel.API.Repositories
             return _context.Products.ToList();
         }
 
+        public Product GetProductById(Guid id)
+        {
+            return _context.Products.AsNoTracking().FirstOrDefault(p => p.Id == id);
+        }
+
         public Product GetProductByName(string name)
         {
-            return _context.Products.First(p => p.Name == name);
+            return _context.Products.FirstOrDefault(p => p.Name == name);
         }
 
         public void UpdateProduct(Product product)

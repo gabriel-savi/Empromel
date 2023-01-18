@@ -13,5 +13,9 @@ namespace Empromel.API.Data.Context
 
 
         public DbSet<Product> Products { get; set; }
+
+
+        public DbSet<Expenses> Expenses { get; set; }
+    
     }
 }

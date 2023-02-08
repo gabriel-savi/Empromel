@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Empromel.API.Models
 {
@@ -47,5 +48,6 @@ namespace Empromel.API.Models
         [MaxLength(2)]
         [Required]
         public string Uf { get; set; }
+
     }
 }

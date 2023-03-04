@@ -77,6 +77,7 @@ namespace Empromel.API.Repositories
                 transaction.Rollback();
                 throw;
             }
+
         }
 
     }
